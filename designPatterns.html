@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Design Patterns | Guia Basico ES</title>
+</head>
+<body>
+    <nav><a href="index.html">Pagina Inicial</a></nav>
+    <h1 class="atx" id="scrum">PADRÕES DE PROJETO (DESIGN PATTERNS)</h1>
+    <h2 class="atx" id="definindo">Definindo</h2>
+        <p><strong>Design Patterns (DP)</strong> são "soluções" para problemas comumente encontrados na produção de softwares que utilizam o paradigma de Orientação a Objetos (OO); esses problemas podem estar relacionados a complexidade nas relações entre classes, seus comportamentos, compatibilidade, eficiência de execução, clareza na lógica, capacidade de manutenção, entre outros. Eles vizam explorar ao máximo conceitos da Programação Orientada à Objetos (POO), sendo necessário um conhecimento prévio sobre o paradigma.</p>
+        <p>Sua importância para o desenvolvimento de software, ficará clara nas definições dos tipos de DP logo abaixo; porém, antes disso, vale ressaltar que um profissional da computação deve conhecê-los por se tratar de padrões amplamente aceitos no meio da produção de softwares, especialmente os 23 presentes no livro <em>Design Patterns: Elements of Reusable Object-Oriented Software</em> [1], dando coerência de código àqueles que os adotam, facilitando o trabalho em equipe, na manutenção do software e maior facilidade de compreensão para aqueles que estiverem vendo o código pela primeira vez ou usando-os como cliente.</p>
+    <h2 class="atx" id="tipos-de-dp">Tipos de DP</h2>
+        <p><strong>Padrões Criacionais:</strong> intimamente ligados a criação de objetos, oferecem maior flexibilidade nas formas de adquirir instâncias. Entre os padrões deste tipo temos o <em>Builder</em> que constroi um objeto parte por parte, evitando criação de muitas subclasses e/ou contrutores complexos; como também o <em>Prototype</em> onde é muito mais eficiente clonar um objeto do que instanciar uma classe, pricipalmente aquelas que possui uma contrução muito complexa.</p>
+        <p><strong>Padrões Estruturais:</strong> intimamente ligado a "estrutura" da classe, seus atributos e métodos. Entre os padrões desse tipo temos o <em>Flyweight</em>, onde, em vez de ter multiplos objetos carreguem em si o mesmo atributo com o mesmo valor, eles passem a acessar esses dados de um único objeto padrão, evitando gasto de memória (p. e., o dano de projéteis de armas em jogos); temos também o <em>Decorator</em>, onde o comportamento (métodos) dos objetos podem ser auterados/adicionado/removidos dinamicamente.</p>
+        <p><strong>Padrões Comportamentais:</strong> já este padrão está mais ligado ao algoritmo e/ou o comportamento entre objetos. A exemplo disso temos o padrão <em>Strategy</em>, onde comportamentos (algoritmos/métodos) parecidos estão contidos em classes e passam a ser um comportamento próprio do objeto cliente; há também o padrão <em>Chain of Responsibility</em>, onde você cria uma cadeia sequêncial de classes com objetivos próprios, essas classes decidem se passará para a próxima na cadeia ou não, assim, esse(s) "algoritmos" podem ou não serem acessados, como também a ordem de acesso desses algoritmos pode ser definida dinamicamente.</p>
+    <h2 class="atx" id="exemplo-de-uso">Exemplo de Uso</h2>
+        <p>Falamos anteriormente quanto aos padrões <em>Prototype</em> e <em>Flyweight</em>, onde o primeiro copia uma instância (útil quando é caro a instânciação e precisa de muitas delas) e o segundo evita redundância de dados (evita gasto de memória com muitas instâncias armazenando o mesmo valor).</p>
+        <p>Em cenário de jogos, onde há muitos elementos iguais pode-se combinar ambos para melhor eficiência (a depender do publico alvo); olhemos para um jogo que há vários mobs nocivos ao player, esses mobs possuem nivéis de perigo que marcam o dano de seu ataque, porém, quanto menor o nível maior a velocidade de spawn deles, em vez de por o dano nas multiplas instâncias de cada mob, pode-se usar uma classe que guarde o valor de dano; enquanto isso, o spawn dos mobs podem ser instânciados utilizando o método de clonagem, dando assim eficiência a execução do jogo.</p>
+    <h2 class="atx" id="referencias">Referências</h2>
+        <p>[1] E. Gamma, R. Helm, R. Johnson, and J. Vlissides, Design Patterns: Elements of Reusable Object-Oriented Software. Reading, MA, USA: Addison-Wesley, 1995.</p>
+        <p>[2] A. Shvets, "Padrões de projeto," Refactoring.Guru. [Online]. Disponível: <a href="https://refactoring.guru/pt-br/design-patterns">https://refactoring.guru/pt-br/design-patterns</a>. [Acesso em: 13 dez. 2025].</p>
+    </body>
+</html>
