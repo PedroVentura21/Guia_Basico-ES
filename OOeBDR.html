@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guia Basico ES</title>
+</head>
+<body>
+    <h1 class="atx" id="integracao-de-sistemas-oo-com-banco-de-dados-relacionais-orm">INTEGRAÇÃO DE SISTEMAS OO COM BANCO DE DADOS RELACIONAIS (ORM)</h1>
+    <h2 class="atx" id="dados-no-paradigma-de-orientacao-a-objetos-oo-e-em-banco-de-dados-relacionais-bdr">Dados no paradigma de Orientação a Objetos (OO) e em Banco de Dados Relacionais (BDR)</h2>
+    <p>Na Orientação a Objetos, superficialmente, um objeto "incorpora estrutura de dados e comportamento" [1], incluso no paradigma quatro aspectos:</p>
+        <ul>
+        <li><p><strong>Identidade:</strong> Cada objeto é uma entidade distinta. esse objeto pode ser algo concreto, como a estatua do Cristo Redentor no Rio, como também algo conceitual, como uma matriz matemática;</p>
+        </li>
+        <li><p><strong>Classificação:</strong> é possível "classificar" cada objeto de acordo com seus atributos e comportamentos - p. e., um pinscher e um pastor alemão podem ser classificados como um cachorro, um cachorro possuí atributos próprios (4 patas, 2 orelhas, ...) e comportamentos (latir, correr, pular, ...);</p>
+        </li>
+        <li><p><strong>Herança:</strong> está relacionado a certa classe "herdar" as caracteristicas de outra - a classe chachorro herda as caracteristicas da classe mamífero e seus comportamentos;</p>
+        </li>   
+        <li><p><strong>Polimorfismo:</strong> nele o foco é o comportamento, que pode ser feito de forma diferente por cada objeto mas o principio é o mesmo - um carro vai da cidade x a y de uma forma e o avião vai de x a y de outro, porém, os dois estão se locomoveram.</p>
+        </li>
+        </ul>
+        <p>Já os BDRs, o enfoque está somente no armazenamento, acesso e tratativas dos dados, onde o armazenamento se dá por tabelas e há regras para armazenamento e no relacionamento entre elas. Cada coluna é um atributo e cada linha é um registro.</p>
+    <h2 class="atx" id="impedance-mismatch-im">Impedance Mismatch (IM)</h2>
+        <p>Apartir das definições dadas de Objetos, percebemos que podemos relacionar os atributos de uma classe simples, com somente atributos primitivos) a uma coluna do banco de dados. Mas, como fazemos então para os métodos, já que o BDR armazenam  somente dados; Mas o que complica de fato é a representação complexa de generalização, agragação e composição (classes sendo atributo(s) de outras classes), sem contar que muitas vezes, para evitar complexidade de consulta do BD, o encapsulamento é deixado de lado. Mudanças que são simples num classe eu no relacionamento entre elas podem ser complexas no BD.</p>
+        <p><strong>Por exemplo:</strong> em questão de herança, a classes raiz teria na tabela uma primary key e uma classe filha teria obrigatoriamente uma foreighn key associada a pk da raiz, e isto recursivamente a cada classe na herança (algo análogo a uma pilha), seria necessário criar um registro em cada uma das várias tabelas para ter uma classe; a complexidade aumenta se houver associações.</p>
+    <h2 class="atx" id="object-relational-mapping-orm">Object-Relational Mapping (ORM)</h2>
+        <p>É uma forma de contornar essa complexidade são os tipos de Mapeamento Objeto-Relacional, uma espécie de tradução do código da linguagem OO para o SQL. No próprio código podem manipular as estruturas da tabela e ações de CRUD (Creat, Read, Update e Delete) dos dados utilizando frameworks especializados em cada linguagem OO. O que torna mais ágil o desenvolvimento de softwares.</p>
+        <p>Apesar disso, há alguns contras:</p>
+            <ul>
+            <li><p>É necessário conhecer a sintaxe do framework/library;</p>
+            </li>
+            <li><p>Grande complexidade pode trazer erros;</p>
+            </li>
+            <li><p>Manipulações ineficientes;</p>
+            </li>
+            </ul>
+        <p>Para usá-los é necessário conhecer bem como funcionam, estudar os prós e contras a fundo e ver se de fato vale apena implementar no projeto.</p>
+        <p><strong>Exemplos de inserção e leitura usando SQLAlchemy na linguagem Python:</strong></p>
+            <ul>
+            <li><p><strong>Inserção:</strong></p>
+            <p># Criar uma instância da classe (o objeto) </p>
+            <p>novo_usuario = Usuario(nome="Carlos", idade=28, email="<a href="mailto:carlos@email.com">carlos@email.com</a>") </p>
+            <p># Adicionar à "zona de espera" da sessão </p>
+            <p>session.add(novo_usuario) # Efetivar no Banco de Dados </p>
+            <p>session.commit()</p>
+            </li>
+            <li><p><strong>Leitura:</strong></p>
+            <p># Busca o usuário com ID 1. Retorna None se não achar.</p>
+            <p>usuario = session.get(Usuario, 1) 
+            print(usuario.nome)</p>
+            </li>
+            </ul>
+    <h2 class="atx" id="referencias">Referências</h2>
+        <p>[1] M. Blaha and J. Rumbaugh, <em>Modelagem e Projetos Baseados em Objetos com UML 2</em>. Rio de Janeiro: Elsevier, 2006.</p>
+        <p>[2] K. Holmes, <em>Mismatch: How Inclusion Shapes Design</em>. Cambridge, MA, USA: MIT Press, 2018.</p>
+</body>
